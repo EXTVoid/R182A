@@ -7,5 +7,5 @@ config watchdog
         option period '30'
         option period_count '1'
         option iface 'wwan'
-	option modemrestart '0'
+        option modemrestart '0'
         option ledstatus '0'
