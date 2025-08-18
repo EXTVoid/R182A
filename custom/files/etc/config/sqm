@@ -1,6 +1,6 @@
-config queue 'br-lan'
+config queue 'eth1'
 	option enabled '0'
-	option interface 'br-lan'
+	option interface 'eth1'
 	option download '50000'
 	option upload '10000'
 	option qdisc 'cake'
