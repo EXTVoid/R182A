@@ -1,7 +1,7 @@
 config watchdog
         option enabled '0'
         option action 'wan'
-        option log 'all'
+        option log 'offline'
         option delay '600'
         option dest 'facebook.com'
         option period '30'
