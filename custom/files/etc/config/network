@@ -35,7 +35,7 @@ config interface 'wwan'
 	option username 'any'
 	option password 'any'
 	option ipv6 'auto'
-	option delay '8'
+	option delay '10'
 	option metric '30'
 
 config interface 'openvpn'
