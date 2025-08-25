@@ -7,7 +7,7 @@ src-git small_package https://github.com/kenzok8/small-package
 # src-git small https://github.com/kenzok8/small
 
 # Extra Packages
-src-git 3ginfo_lite https://github.com/4IceG/luci-app-3ginfo-lite
+src-git 3ginfo_lite https://github.com/4IceG/luci-app-3ginfo-lite-js
 src-git lite_watchdog https://github.com/4IceG/luci-app-lite-watchdog
 src-git my_pkg https://github.com/EXTVoid/PKG
 src-git modemband https://github.com/4IceG/luci-app-modemband
