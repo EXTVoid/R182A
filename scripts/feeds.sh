@@ -14,7 +14,7 @@ src-git modemband https://github.com/4IceG/luci-app-modemband
 src-git modemdefine https://github.com/4IceG/luci-app-modemdefine
 src-git sms_tool_js https://github.com/4IceG/luci-app-sms-tool-js
 src-git xray https://github.com/yichya/luci-app-xray
-src-git v2raya https://github.com/v2rayA/v2raya-openwrt:zap1
+src-git v2raya https://github.com/v2rayA/v2raya-openwrt;zap1
 src-git zapret https://github.com/remittor/zapret-openwrt
 EOF
 
