@@ -93,7 +93,6 @@ jobs:
       SOURCE_OWNER: ${{ steps.env.outputs.SOURCE_OWNER }}
       SOURCE_REPO: ${{ steps.env.outputs.SOURCE_REPO }}
       CURRENT_BRANCH: ${{ steps.env.outputs.CURRENT_BRANCH }}
-      DEVICE_NAME: ${{ steps.env.outputs.DEVICE_NAME }}
       DEVICE_PLATFORM: ${{ steps.env.outputs.DEVICE_PLATFORM }}
       DEVICE_TARGET: ${{ steps.env.outputs.DEVICE_TARGET }}
       DEVICE_SUBTARGET: ${{ steps.env.outputs.DEVICE_SUBTARGET }}
@@ -192,9 +191,6 @@ jobs:
           echo "CURRENT_BRANCH=$CURRENT_BRANCH" >> $GITHUB_ENV
           echo "CURRENT_BRANCH=$CURRENT_BRANCH" >> $GITHUB_OUTPUT
           cd $OPENWRT_ROOT_PATH
-          export DEVICE_NAME=$(grep 'CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/')
-          echo "DEVICE_NAME=$DEVICE_NAME" >> $GITHUB_ENV
-          echo "DEVICE_NAME=$DEVICE_NAME" >> $GITHUB_OUTPUT
           export DEVICE_PLATFORM=$(grep 'CONFIG_TARGET_ARCH_PACKAGES' .config | awk -F '"' '{print $2}')
           echo "DEVICE_PLATFORM=$DEVICE_PLATFORM" >> $GITHUB_ENV
           echo "DEVICE_PLATFORM=$DEVICE_PLATFORM" >> $GITHUB_OUTPUT
@@ -455,7 +451,7 @@ jobs:
       - name: Upload Bin To Artifact
         uses: actions/upload-artifact@v5
         with:
-          name: ${{ env.SOURCE_REPO }}-${{ env.DEVICE_NAME }}-${{ env.BUILD_DATE }}
+          name: ${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.BUILD_DATE }}
           path: ${{ env.OPENWRT_ROOT_PATH }}/bin
           retention-days: 7
 
@@ -471,9 +467,9 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           token: ${{ env.TOKEN }}
-          name: ${{ env.SOURCE_REPO }}_${{ env.SOURCE_BRANCH }}_${{ env.DEVICE_NAME }}
+          name: ${{ env.SOURCE_REPO }}_${{ env.SOURCE_BRANCH }}_${{ env.DEVICE_TARGET }}
           commit: ${{ env.CURRENT_BRANCH }}
-          tag: ${{ env.SOURCE_REPO }}_${{ env.SOURCE_BRANCH }}_${{ env.DEVICE_NAME }}
+          tag: ${{ env.SOURCE_REPO }}_${{ env.SOURCE_BRANCH }}_${{ env.DEVICE_TARGET }}
           artifacts: ${{ env.OPENWRT_ROOT_PATH }}/bin/targets/${{ env.DEVICE_TARGET }}/${{ env.DEVICE_SUBTARGET }}/*
           replacesArtifacts: true
           allowUpdates: true
@@ -486,5 +482,4 @@ jobs:
             - Device Target: ${{ env.DEVICE_TARGET }}
             - Device Subtarget: ${{ env.DEVICE_SUBTARGET }}
             - Device Platform: ${{ env.DEVICE_PLATFORM }}
-            - Device Name: ${{ env.DEVICE_NAME }}
             - Build Date: ${{ env.BUILD_DATE }}
