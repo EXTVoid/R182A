@@ -363,7 +363,7 @@ jobs:
           cp .config ./bin/build.config
 
       - name: Upload Config To Artifact
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: Build-Config
           path: ${{ env.OPENWRT_ROOT_PATH }}/bin/build.config
@@ -412,7 +412,7 @@ jobs:
           make checksum
 
       - name: Upload Bin To Artifact
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: ${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.BUILD_DATE }}
           path: ${{ env.OPENWRT_ROOT_PATH }}/bin
