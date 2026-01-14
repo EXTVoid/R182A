@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Updating OpenWrt feeds configuration..."
-sed -i 's|git\.openwrt\.org/\(feed\|project\)|github\.com/openwrt|g' ./feeds.conf.default
+sed -iE 's|git.openwrt.org/(feed\|project)|github.com/openwrt|g' ./feeds.conf.default
 
 cat >> ./feeds.conf.default <<EOF
 # Extra Feeds
