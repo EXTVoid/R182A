@@ -52,5 +52,5 @@ config command
 
 config command
 	option name 'Modem Command'
-	option command 'at_atexe'
+	option command 'at_exe'
 	option param '1'
