@@ -107,7 +107,7 @@
 			"AT+CFUN=1"
 		],
 		"configure": [
-			"AT+ZGDCONT=${profile},\\\"${pdptype}\\\",\\\"${apn}\\\",\\\"\\\",0,0",
+			"AT+ZGDCONT=${profile},\\\"${pdptype}\\\",\\\"${apn}\\\",0",
 			"AT+ZGPCOAUTH=${profile},\\\"${username}\\\",\\\"${password}\\\",0"
 		],
 		"connect": "AT+ZGACT=1,${profile}",
@@ -124,18 +124,6 @@
 		"connect": "AT+ZGACT=1,${context_type}",
 		"finalize": "AT+ZDHCPLEASE=0",
 		"disconnect": "AT+ZGACT=0,1"
-	},
-	"notion": {
-		"initialize": [
-			"AT*APPOWERIND=0",
-			"AT+CFUN=1"
-		],
-		"configure": [
-			"AT+ZGDCONT=${profile},\\\"${pdptype}\\\",\\\"${apn}\\\",0",
-			"AT+ZGPCOAUTH=${profile},\\\"${username}\\\",\\\"${password}\\\",0"
-		],
-		"connect": "AT+ZGACT=1,${profile}",
-		"disconnect": "AT+ZGACT=0,${profile}"
 	},
 	"spreadtrum": {
 		"initialize": [
